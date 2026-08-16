@@ -219,15 +219,11 @@ if assets_loaded:
 
         st.divider()
 
-        # --- NÚT TÍNH TOÁN VÀ DỰ ĐOÁN ---
         if st.button(
             "Dự Đoán Mức Lương Khởi Điểm", type="primary", use_container_width=True
         ):
-            # 1. Tạo DataFrame trống với đủ các cột theo đúng thứ tự model_columns
             input_data = pd.DataFrame(0, index=[0], columns=model_columns)
 
-            # 2. Gán các giá trị dạng số (Numerical Features)
-            # Sử dụng kiểm tra không phân biệt hoa thường để gán đúng cột
             mapping_num = {
                 "cgpa": cgpa,
                 "gpa": cgpa,
