@@ -36,7 +36,7 @@ def load_config() -> dict:
 
 @st.cache_data
 def load_data() -> pd.DataFrame:
-    return pd.read_csv("./Self/data/student_career_success_dataset.csv", index_col=0)
+    return pd.read_csv("./data/student_career_success_dataset.csv", index_col=0)
 
 
 @st.cache_resource
@@ -71,16 +71,16 @@ def build_context(df: pd.DataFrame) -> str:
 
 st.set_page_config(
     page_title="Sản phẩm cuối khóa - CSI06",
-    page_icon="./Self/icons/book-open.svg",
+    page_icon="./icons/book-open.svg",
     layout="centered",
 )
 
 
 @st.cache_resource
 def load_assets():
-    model = tf.keras.models.load_model("./Self/salary_model.keras")
-    scaler = joblib.load("./Self/scaler.pkl")
-    model_columns = joblib.load("./Self/model_columns.pkl")
+    model = tf.keras.models.load_model("./salary_model.keras")
+    scaler = joblib.load("./scaler.pkl")
+    model_columns = joblib.load("./model_columns.pkl")
     return model, scaler, model_columns
 
 
@@ -127,7 +127,7 @@ st.markdown("Trần Gia Phát")
 st.divider()
 
 with st.sidebar:
-    st.logo("./Self/icons/star.svg")
+    st.logo("./icons/star.svg")
     option = st.sidebar.radio(
         "Chọn nội dung hiển thị", ["Dự đoán mức lương", "Chatbot"]
     )
