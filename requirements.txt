@@ -1,7 +1,7 @@
 streamlit
 numpy
 pandas
-tensorflow
+tensorflow==2.15.0
 joblib
 scikit-learn
 python-dotenv
