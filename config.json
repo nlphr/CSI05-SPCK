@@ -2,7 +2,7 @@
   "initial_bot_message": "Chào bạn, tôi là SalaryBot! Tôi có thể giúp bạn giải đáp các thông tin về tập dữ liệu sinh viên, mô hình Neural Network Keras và các yếu tố ảnh hưởng đến mức lương khởi điểm.",
   "project_name": "Mô hình dự đoán mức lương khởi điểm sinh viên",
   "author": "Trần Gia Phát",
-  "class": "CSI06",
+  "class": "CSI05",
   "dataset_name": "student_career_success_dataset.csv",
   "functions": [
     "Giải thích các thuộc tính trong tập dữ liệu (CGPA, Ngành học, Kỹ năng mềm, Dự án,...)",

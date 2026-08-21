@@ -46,27 +46,27 @@ def create_client(api_key: Optional[str]):
     return genai.Client(api_key=api_key)
 
 
-def build_context(df: pd.DataFrame) -> str:
-    def clean_text(value) -> str:
-        if pd.isna(value):
-            return ""
-        return str(value).strip()
+# def build_context(df: pd.DataFrame) -> str:
+#     def clean_text(value) -> str:
+#         if pd.isna(value):
+#             return ""
+#         return str(value).strip()
 
-    def add_detail(item_text: str, label: str, value) -> str:
-        value = clean_text(value)
-        if not value:
-            return item_text
+#     def add_detail(item_text: str, label: str, value) -> str:
+#         value = clean_text(value)
+#         if not value:
+#             return item_text
 
-        suffix = "" if value.endswith((".", "!", "?")) else "."
-        return f"{item_text} {label}: {value}{suffix}"
+#         suffix = "" if value.endswith((".", "!", "?")) else "."
+#         return f"{item_text} {label}: {value}{suffix}"
 
-    menu_lines = []
-    for _, row in menu_df.iterrows():
-        item_text = f"- {clean_text(row['name'])}: {clean_text(row['description'])}"
-        item_text = add_detail(item_text, "Nguyên liệu", row.get("ingredients", ""))
-        item_text = add_detail(item_text, "Ghi chú", row.get("notes", ""))
-        menu_lines.append(item_text)
-    return "\n".join(menu_lines)
+#     menu_lines = []
+#     for _, row in menu_df.iterrows():
+#         item_text = f"- {clean_text(row['name'])}: {clean_text(row['description'])}"
+#         item_text = add_detail(item_text, "Nguyên liệu", row.get("ingredients", ""))
+#         item_text = add_detail(item_text, "Ghi chú", row.get("notes", ""))
+#         menu_lines.append(item_text)
+#     return "\n".join(menu_lines)
 
 
 st.set_page_config(
@@ -300,7 +300,7 @@ if assets_loaded:
                 )
 
             SYSTEM_INSTRUCTION = """
-            Bạn là SalaryBot - trợ lý AI thông minh tư vấn dự án 'Dự đoán mức lương khởi điểm sinh viên' của Trần Gia Phát (Lớp CSI06).
+            Bạn là SalaryBot - trợ lý AI thông minh tư vấn dự án 'Dự đoán mức lương khởi điểm sinh viên' của Trần Gia Phát (Lớp CSI05).
 
             Thông tin dự án & dữ liệu:
             1. Tập dữ liệu: `student_career_success_dataset.csv` gồm 50,000 bản ghi sinh viên với các biến số: CGPA, Ngành học (Computer Science, Data Science, AI, Cybersecurity, Software Engineering...), Kỹ năng (Programming, Communication, Teamwork, Problem Solving), Số giờ học, Tỷ lệ chuyên cần, Dự án, Chứng chỉ, Thực tập.
