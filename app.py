@@ -46,29 +46,6 @@ def create_client(api_key: Optional[str]):
     return genai.Client(api_key=api_key)
 
 
-# def build_context(df: pd.DataFrame) -> str:
-#     def clean_text(value) -> str:
-#         if pd.isna(value):
-#             return ""
-#         return str(value).strip()
-
-#     def add_detail(item_text: str, label: str, value) -> str:
-#         value = clean_text(value)
-#         if not value:
-#             return item_text
-
-#         suffix = "" if value.endswith((".", "!", "?")) else "."
-#         return f"{item_text} {label}: {value}{suffix}"
-
-#     menu_lines = []
-#     for _, row in menu_df.iterrows():
-#         item_text = f"- {clean_text(row['name'])}: {clean_text(row['description'])}"
-#         item_text = add_detail(item_text, "Nguyên liệu", row.get("ingredients", ""))
-#         item_text = add_detail(item_text, "Ghi chú", row.get("notes", ""))
-#         menu_lines.append(item_text)
-#     return "\n".join(menu_lines)
-
-
 st.set_page_config(
     page_title="Sản phẩm cuối khóa - CSI06",
     page_icon="./icons/book-open.svg",
@@ -148,11 +125,11 @@ if assets_loaded:
             )
 
             university_year_vi = st.select_slider(
-                "Năm học", options=list(YEAR_MAP.keys())
+                "Năm học", options=list(YEAR_MAP.keys(), index=0)
             )
 
             academic_perf_vi = st.pills(
-                "Xếp loại học lực", options=list(ACADEMIC_MAP.keys())
+                "Xếp loại học lực", options=list(ACADEMIC_MAP.keys()), index=0
             )
 
             programming = st.slider(
@@ -270,8 +247,8 @@ if assets_loaded:
             col_res1, col_res2 = st.columns(2)
             with col_res1:
                 st.metric("Lương ước tính (USD / Năm)", f"${pred_usd:,.2f}")
-            st.badge(
-                f"Mức lương khởi điểm này được tính thông qua những giá trị đầu vào ở trên bằng một mô hình được huấn luyện."
+            st.caption(
+                f"Mức lương khởi điểm này được tính thông qua những giá trị đầu vào ở trên bằng một mô hình được huấn luyện. Mọi thông tin chỉ mang tính chất tham khảo và không đảm bảo chính xác 100%.",
             )
 
     elif option == "Chatbot":
@@ -286,7 +263,7 @@ if assets_loaded:
 
         if not client:
             st.warning(
-                "Chưa cấu hình GEMINI_API_KEY. Vui lòng thêm API Key vào file `.env` để kích hoạt Chatbot."
+                "Chưa cấu hình GEMINI. Vui lòng thêm API Key vào file `.env` để kích hoạt Chatbot."
             )
         else:
             try:
