@@ -125,11 +125,11 @@ if assets_loaded:
             )
 
             university_year_vi = st.select_slider(
-                "Năm học", options=list(YEAR_MAP.keys(), index=0)
+                "Năm học", options=list(YEAR_MAP.keys())
             )
 
             academic_perf_vi = st.pills(
-                "Xếp loại học lực", options=list(ACADEMIC_MAP.keys()), index=0
+                "Xếp loại học lực", options=list(ACADEMIC_MAP.keys())
             )
 
             programming = st.slider(
