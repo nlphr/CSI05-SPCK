@@ -286,7 +286,7 @@ if assets_loaded:
 
         if not client:
             st.warning(
-                "Chưa cấu hình GEMINI_API_KEY. Vui lòng thêm API Key vào file `.env` hoặc `secrets.toml` để kích hoạt Chatbot."
+                "Chưa cấu hình GEMINI_API_KEY. Vui lòng thêm API Key vào file `.env` để kích hoạt Chatbot."
             )
         else:
             try:
